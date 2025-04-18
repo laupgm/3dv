@@ -6,14 +6,16 @@ if __name__ == '__main__':
     model = YOLO("runs\segment/train3\weights/best.pt")
 
     # Train the model on the COCO8 dataset for 100 epochs
-    train_results = model.train(data="suture1-1\data.yaml", epochs=100, imgsz=640, device=0)
+    #train_results = model.train(data="suture1-1\data.yaml", epochs=100, imgsz=640, device=0)
 
     # Evaluate the model's performance on the validation set
-    metrics = model.val()
+    #metrics = model.val()
 
     # Perform object detection on an image
-    results = model("suture1-1/test\images\Attending_6_b_jpeg.rf.caae25ce18e5ede65e939c7ea5ebc710.jpg")  # Predict on an image
+    results = model("suture-1/valid\images\E2_1_9066_jpg.rf.e48359cc71efc27c21656123155d1323.jpg")  # Predict on an image
     results[0].show()  # Display results
+    for result in results:
+        print("result.tojson:", result.tojson())
 
 # Export the model to ONNX format for deployment
 #path = model.export(format="onnx")  # Returns the path to the exported model
