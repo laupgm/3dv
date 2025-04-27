@@ -1,9 +1,0 @@
-#from roboflow import Roboflow
-#rf = Roboflow(api_key="l0Nhx8ojiDzUae3Tdake")
-#project = rf.workspace("sugar-o862x").project("suture1")
-#version = project.version(1)
-#dataset = version.download("yolov11")
-
-from ultralytics.data.converter import convert_coco
-
-convert_coco(labels_dir="suture-1a/train\_annotations.coco.json", use_segments=True)
