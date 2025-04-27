@@ -8,8 +8,9 @@ if __name__ == '__main__':
 
     # Perform object detection on an image
     model=YOLO('runs\segment/train12\weights/best.pt')
-    results = model("3dv-1/train\images/1-50-_jpg.rf.951ab34f7a8a5607d6bf43dc9497706a.jpg")  # Predict on an image
+    results = model("demonstration")  # Predict on an image
     results[0].show()  # Display results
+    results[1].show()
 
     idx=0
 
