@@ -1,13 +1,11 @@
 from ultralytics import YOLO
-import numpy as np
 from metrics_functions import *
-import statistics as stats
 from operator import itemgetter
 
 if __name__ == '__main__':
 
     # Perform object detection on an image
-    model=YOLO('runs\segment/train12\weights/best.pt')
+    model=YOLO('runs\segment/train11\weights/best.pt')
     results = model("demonstration")  # Predict on an image
     results[0].show()  # Display results
     results[1].show()
@@ -38,19 +36,19 @@ if __name__ == '__main__':
         #### KNOT PLACEMENT
 
         knots=[]
-        knot_threshold=0.01
+        knot_threshold=0.012
         leftovers=[]
         stitches=[]
         wounds=[]
         min_angle_thres=80
         max_angle_thres=100
         skew_thres=15
-        length_thres=0.05
-        dist_thres=0.05
-        lolen_thres=0.025
-        bitesl_thres=0.03
-        bitesr_thres=0.03
-        bites_thres=0.03
+        length_thres=0.03
+        dist_thres=0.03
+        lolen_thres=0.015
+        bitesl_thres=0.02
+        bitesr_thres=0.02
+        bites_thres=0.02
 
         for i in range(len(names)):
             #print(f'{names[i]}: {xyn[i]}')
@@ -121,7 +119,7 @@ if __name__ == '__main__':
             for st in range(0,len(sorted_stitches),2):
                 s=stitch_orientation(sorted_stitches[st][0],sorted_stitches[st][1],sorted_stitches[st+1][0],sorted_stitches[st+1][1])
                 angle=abs(w-s)
-                if angle>min_angle_thres and angle<max_angle_thres:
+                if min_angle_thres<angle<max_angle_thres:
                     angle_success+=1
             angle_quality=(angle_success/len(sorted_stitches)*2)*100
             print(f'Suture Orientation Quality (Perpendicularity Between the Stitch and the Wound): {angle_quality:.2f}%')

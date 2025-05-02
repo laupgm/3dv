@@ -1,18 +1,15 @@
 from ultralytics import YOLO
-import numpy as np
-from metrics_functions import *
-import statistics as stats
-from operator import itemgetter
 
 if __name__ == '__main__':
 
     # Load a pretrained YOLO11n model
-    model = YOLO("yolo11l.pt")
+    #model = YOLO("yolo11l-seg.pt")
 
     # Train the model on the COCO8 dataset for 100 epochs
-    train_results = model.train(data="3dv-1\data.yaml", epochs=100, imgsz=640)
+    #train_results = model.train(data="3dv-1\data.yaml", epochs=200, imgsz=640)
 
     # Evaluate the model's performance on the validation set
+    model=YOLO('runs\segment/train11\weights/best.pt')
     metrics = model.val()
 
     # Perform object detection on an image

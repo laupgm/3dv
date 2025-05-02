@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 4
+names: ['knot', 'leftover', 'stitch', 'wound']
+
+roboflow:
+  workspace: sugar-o862x
+  project: 3dv
+  version: 1
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/sugar-o862x/3dv/dataset/1
